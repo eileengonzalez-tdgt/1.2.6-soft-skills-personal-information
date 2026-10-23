@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lesson 1.2.6: Personal Information | 10 Week English Program</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f6f7',
+                            100: '#e5e7eb',
+                            200: '#d1d5db',
+                            300: '#b5bac0',
+                            400: '#737a82',
+                            500: '#737a82',
+                            600: '#54595f',
+                            700: '#54595f',
+                            800: '#54595f',
+                            900: '#2a2c2e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Custom Styles for Flipcards & Print formatting -->
+<style>
+        /* Helvetica is loaded from the user device or an appropriately licensed webfont. */
+        
+        body {
+            font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #2a2c2e;
+        }
+
+        /* Perspective for 3D flip card effect */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Print Media Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white;
+                color: black;
+            }
+            .step-section {
+                display: block !important;
+                page-break-after: always;
+            }
+            .shadow-lg, .shadow-md, .shadow-sm {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1;
+            }
+        }
+
+        .step-section {
+            display: none;
+        }
+
+        .step-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        :root { --subject: #54595f; --subject-light: #e5e7eb; --ink: #2a2c2e; }
+        /* Master header: subject gray with light-gray controls */
+        .master-header { background:#54595f !important; color:#ffffff !important; }
+        .master-header h1 { color:#ffffff !important; }
+        .master-header .brand-badge { background:#e5e7eb !important; color:#54595f !important; }
+        .master-header .header-meta { color:#eef0f2 !important; }
+        .master-tabs { background:#e5e7eb !important; border-color:#b5bac0 !important; }
+        .master-tabs .nav-tab:not(.bg-brand-600) { color:#2a2c2e !important; }
+        .master-tabs .nav-tab:not(.bg-brand-600):hover { background:#d1d5db !important; color:#2a2c2e !important; }
+        .master-tabs .nav-tab.bg-brand-600 { background:#54595f !important; color:#fff !important; }
+        .master-header button.bg-brand-600 { background:#e5e7eb !important; color:#54595f !important; }
+        .master-header button.bg-brand-600:hover { background:#d1d5db !important; }
+        .key-accuracy-rule { background:#f5f6f7 !important; border-left-color:#737a82 !important; color:#54595f !important; }
+
+        html { font-size: 16px; }
+        body, button, input, textarea, select { font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        button { font-size: 15px; font-weight: 600; }
+        main h2 { font-size: 28px; line-height: 1.25; font-weight: 700; }
+        main h3 { font-size: 22px; line-height: 1.3; font-weight: 600; }
+        main p { line-height: 1.6; }
+        main .text-xs { font-size: 14px; }
+        main .text-sm { font-size: 16px; }
+        main .text-base { font-size: 16px; }
+        main .text-lg { font-size: 18px; }
+        main input, main textarea, main select { background: #fff; color: #2a2c2e; font-size: 16px; }
+        main input:focus, main textarea:focus, main select:focus { outline: 2px solid var(--subject); outline-offset: 2px; }
+        .nav-tab { font-size: 14px; }
+        .nav-tab:focus-visible, button:focus-visible { outline: 3px solid #b5bac0; outline-offset: 2px; }
+        .master-bottom-nav { display:flex; align-items:center; justify-content:space-between; gap:16px; max-width:1152px; margin:0 auto 20px; padding:12px 20px; }
+        .master-bottom-nav button { background:var(--subject); color:white; padding:11px 20px; border-radius:9px; }
+        .master-bottom-nav button:disabled { background:#d9d9d9; color:#54595f; cursor:not-allowed; }
+        #section-progress-label { color:#e2e2e2; font-size:12px; margin-left:12px; white-space:nowrap; }
+        @media (max-width: 768px) { main h2 {font-size:25px;} main h3 {font-size:20px;} .master-bottom-nav {padding:12px;} }
+        @media print { .master-bottom-nav {display:none!important;} .step-section {break-after:auto;page-break-after:auto;} }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TOP HEADER & NAVIGATION -->
+<header class="master-header bg-[#54595f] text-white sticky top-0 z-50 shadow-md no-print">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Branding -->
+<div class="flex items-center space-x-3">
+<div class="brand-badge bg-[#e5e7eb] text-[#54595f] font-bold p-2 rounded-lg text-sm tracking-wide">
+                        10W
+                    </div>
+<div>
+<h1 class="font-bold text-lg leading-tight">Lesson 1.2.6: Personal Information</h1>
+<p class="header-meta text-xs font-medium text-[#eef0f2]">10 Week English Program · Day 2 · Soft Skills · CEFR A2–B1 · 60 min</p>
+</div>
+</div>
+<!-- Print & Export Action -->
+<button class="flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white text-xs sm:text-sm font-semibold py-2 px-3 sm:px-4 rounded-lg transition-colors" onclick="window.print()">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden sm:inline">Print / Save PDF</span>
+</button>
+</div>
+</div>
+<!-- Progress Bar -->
+<div aria-label="Lesson section progress" aria-valuemax="6" aria-valuemin="0" aria-valuenow="1" class="w-full bg-[#b5bac0] h-1.5" id="progress-track" role="progressbar">
+<div class="bg-brand-500 h-full transition-all duration-300" id="progress-bar" style="width:16.6667%"></div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="master-tabs bg-[#e5e7eb] border-t border-[#b5bac0] overflow-x-auto">
+<div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-2 py-2 text-xs sm:text-sm whitespace-nowrap">
+<button class="nav-tab px-3 py-1.5 rounded-md font-medium text-white bg-brand-600" id="tab-0" onclick="switchStep(0)">Overview</button>
+<button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-1" onclick="switchStep(1)">1. Encounter (10m)</button>
+<button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-2" onclick="switchStep(2)">2. Clarify (15m)</button>
+<button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-3" onclick="switchStep(3)">3. Remember (10m)</button>
+<button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-4" onclick="switchStep(4)">4. Internalize (15m)</button>
+<button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-5" onclick="switchStep(5)">5. Fluent Use (10m)</button>
+</div>
+</nav>
+</header>
+<!-- MAIN CONTAINER -->
+<main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+<section class="step-section active" id="step-0"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div><span class="inline-block bg-brand-100 text-brand-800 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wide">Lesson 1.2.6 Overview</span><h2 class="text-slate-900 mt-3">Personal Information</h2></div><div class="text-right"><p class="text-xs text-slate-500">Total Duration</p><p class="font-bold text-brand-600 text-lg">60 minutes</p></div></div><p class="text-slate-600 leading-relaxed mb-6">Learn to give, request, record and confirm personal information clearly. Practice listening to fictional customers and handling everyday and workplace registration conversations accurately.</p><div class="grid md:grid-cols-3 gap-4 mb-8"><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><div class="text-brand-600 font-bold text-lg mb-1">01. Provide</div><p class="text-sm">Say and spell names, ages, phone numbers, addresses and emails.</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><div class="text-brand-600 font-bold text-lg mb-1">02. Clarify</div><p class="text-sm">Ask for repetition, spelling and confirmation politely.</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><div class="text-brand-600 font-bold text-lg mb-1">03. Verify</div><p class="text-sm">Listen, record and check information accurately.</p></div></div><h3 class="font-bold text-slate-800 text-lg mb-3">Lesson Roadmap</h3><div class="overflow-x-auto"><table class="w-full text-left text-xs sm:text-sm border-collapse"><thead><tr class="bg-slate-100 text-slate-700"><th class="p-3">Stage</th><th class="p-3">Focus Area</th><th class="p-3">Time</th><th class="p-3">Activity Output</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="p-3">Encounter</td><td class="p-3">Spot the Information</td><td class="p-3">10m</td><td class="p-3">Identify fields in a fictional form</td></tr><tr><td class="p-3">Clarify</td><td class="p-3">Say It Clearly</td><td class="p-3">15m</td><td class="p-3">Pronunciation and clarification</td></tr><tr><td class="p-3">Remember</td><td class="p-3">Accuracy Challenge</td><td class="p-3">10m</td><td class="p-3">Flashcards and checked responses</td></tr><tr><td class="p-3">Internalize</td><td class="p-3">Listen, Record &amp; Verify</td><td class="p-3">15m</td><td class="p-3">Three spoken client profiles</td></tr><tr><td class="p-3">Fluent Use</td><td class="p-3">Registration Role-play</td><td class="p-3">10m</td><td class="p-3">Complete and confirm a registration</td></tr></tbody></table></div><button class="bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-lg mt-6" onclick="switchStep(1)">Start Lesson →</button></div></section><section class="step-section" id="step-1"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200"><div class="flex flex-wrap justify-between items-center gap-3 mb-5"><h2 class="text-slate-900">Encounter · Spot the Information</h2><span class="bg-brand-100 text-brand-800 rounded-full px-3 py-1 text-xs font-semibold">10 min</span></div><p class="mb-4">Study this <strong>fictional</strong> registration form. What information is included? Why must it be recorded correctly?</p><div class="p-4 bg-slate-50 rounded-xl border border-slate-200 my-4"><h3 class="mb-3">Sample registration form</h3><dl class="grid sm:grid-cols-2 gap-3"><div><dt class="text-sm text-slate-500">Full name</dt><dd class="font-semibold">Taylor Brooks</dd></div><div><dt class="text-sm text-slate-500">Age</dt><dd class="font-semibold">30</dd></div><div><dt class="text-sm text-slate-500">Phone</dt><dd class="font-semibold">(202) 555-0146</dd></div><div><dt class="text-sm text-slate-500">Email</dt><dd class="font-semibold">t.brooks@example.com</dd></div><div class="sm:col-span-2"><dt class="text-sm text-slate-500">Address</dt><dd class="font-semibold">24 Oak Street, Austin, TX 78701</dd></div></dl></div><h3 class="mt-6 mb-3">Discuss with a partner</h3><ol class="list-decimal pl-6 space-y-2"><li>Which details are numbers? Which require spelling?</li><li>What could happen if a phone number or email is incorrect?</li><li>What would you ask if you did not hear the street name?</li></ol><div class="p-4 bg-slate-50 rounded-xl border border-slate-200 mt-5"><strong>Privacy reminder:</strong> All profiles in this lesson are invented. Do not enter or share your own personal contact details.</div><div class="mt-8 pt-5 border-t border-slate-200 text-right"><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(2)">Continue to Next Stage →</button></div></div></section><section class="step-section" id="step-2"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200"><div class="flex flex-wrap justify-between items-center gap-3 mb-5"><h2 class="text-slate-900">Clarify · Say It Clearly</h2><span class="bg-brand-100 text-brand-800 rounded-full px-3 py-1 text-xs font-semibold">15 min</span></div><p class="mb-4">Follow your trainer's examples. Listen, repeat, and practice the information with a partner. Your trainer will model pronunciation and help you check your answers.</p><div class="grid md:grid-cols-2 gap-4 mb-6"><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><h3>Age: 13 vs. 30</h3><p class="mt-2"><strong>thirteen</strong> / <strong>thirty</strong></p><p class="text-sm text-slate-600 mt-2">Trainer tip: Practice the stress difference, then say “I'm thirteen years old” and “I'm thirty years old.”</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><h3>Phone number</h3><p class="mt-2"><strong>202-555-0146</strong></p><p class="text-sm text-slate-600 mt-2">Read digits individually: two zero two, five five five, zero one four six.</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><h3>Email symbols</h3><p class="mt-2"><strong>@</strong> = at · <strong>.</strong> = dot · <strong>_</strong> = underscore · <strong>-</strong> = hyphen</p><p class="text-sm text-slate-600 mt-2">Practice: alex_lee@example.com → “alex underscore lee at example dot com.”</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><h3>Address</h3><p class="mt-2"><strong>24 Oak Street, Austin, Texas 78701</strong></p><p class="text-sm text-slate-600 mt-2">Say the street number, street name, city, state, and ZIP code clearly.</p></div></div><h3 class="mb-3">Useful clarification phrases</h3><div class="grid md:grid-cols-2 gap-3"><div class="p-4 bg-slate-50 rounded-xl border border-slate-200">“Could you spell your last name, please?”</div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200">“Was that thirteen or thirty?”</div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200">“Could you repeat the last four digits?”</div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200">“Let me confirm your email address.”</div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200">“Is that correct?”</div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200">“B as in Bravo.”</div></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200 mt-5"><strong>Trainer-led practice:</strong> Listen to your trainer read a fictional phone number, email, or address. Write it down, compare with a partner, and ask for clarification when necessary. Switch roles for a second round.</div><div class="mt-8 pt-5 border-t border-slate-200 text-right"><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(3)">Continue to Next Stage →</button></div></div></section><section class="step-section" id="step-3"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200"><div class="flex flex-wrap justify-between items-center gap-3 mb-5"><h2 class="text-slate-900">Remember · Information Accuracy Challenge</h2><span class="bg-brand-100 text-brand-800 rounded-full px-3 py-1 text-xs font-semibold">10 min</span></div><p class="mb-4">Flip the cards to review key expressions, then complete the five questions. Feedback appears after you select <strong>Check Answers</strong>.</p><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-7" id="flashcards"></div><div class="space-y-4" id="quickQuiz"></div><div class="flex flex-wrap gap-3 mt-5"><button class="bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-lg" onclick="checkQuick()">Check Answers</button><button class="bg-slate-200 text-slate-800 px-4 py-2.5 rounded-lg" onclick="resetQuick()">Reset</button></div><p class="font-semibold mt-3" id="quickResult" role="status"></p><div class="mt-8 pt-5 border-t border-slate-200 text-right"><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(4)">Continue to Next Stage →</button></div></div></section><section class="step-section" id="step-4"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200"><div class="flex flex-wrap justify-between items-center gap-3 mb-5"><h2 class="text-slate-900">Internalize · Listen, Record &amp; Verify</h2><span class="bg-brand-100 text-brand-800 rounded-full px-3 py-1 text-xs font-semibold">15 min</span></div><p class="mb-3">Listen to each fictional customer and complete the form. You can replay the recording and select a slower speed. <strong>Try the task before revealing the transcript.</strong></p><div class="p-4 bg-slate-50 rounded-xl border border-slate-200 mb-5"><strong>Audio:</strong> This lesson uses your device's built-in English text-to-speech voice. Use Chrome or Edge for best compatibility. The voice and pronunciation may vary by device. <span class="text-sm text-slate-600" id="voiceStatus"></span></div><div class="flex flex-wrap gap-3 mb-5"><label class="font-semibold" for="speed">Playback speed</label><select class="border border-slate-300 rounded-lg p-2" id="speed"><option value="1">Normal (1×)</option><option value="0.75">Slow (0.75×)</option></select><button class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg" onclick="stopSpeech()">Stop audio</button></div><div class="space-y-6" id="listeningExercises"></div><div class="mt-8 pt-5 border-t border-slate-200 text-right"><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(5)">Continue to Next Stage →</button></div></div></section><section class="step-section" id="step-5"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200"><div class="flex flex-wrap justify-between items-center gap-3 mb-5"><h2 class="text-slate-900">Fluent Use · Registration Role-play</h2><span class="bg-brand-100 text-brand-800 rounded-full px-3 py-1 text-xs font-semibold">10 min</span></div><p class="mb-4">Work in pairs. Choose one scenario and exchange information using <strong>fictional identities</strong>. Switch roles and repeat.</p><div class="flex flex-wrap gap-3 mb-4"><button class="bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-lg" id="roleA" onclick="showRole('a')">Scenario A · Gym Registration</button><button class="bg-slate-200 text-slate-800 px-4 py-2.5 rounded-lg" id="roleB" onclick="showRole('b')">Scenario B · Customer Information Update</button></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200 mb-5" id="roleContent"></div><h3 class="mb-3">Communication checklist</h3><div class="space-y-2 mb-6"><label class="block"><input class="mr-2 accent-brand-600" type="checkbox"/> I asked for information politely.</label><label class="block"><input class="mr-2 accent-brand-600" type="checkbox"/> I asked for spelling or repetition when needed.</label><label class="block"><input class="mr-2 accent-brand-600" type="checkbox"/> I repeated important details to confirm them.</label><label class="block"><input class="mr-2 accent-brand-600" type="checkbox"/> I checked whether the information was correct.</label></div><h3 class="mb-3">Exit ticket</h3><label class="block mb-2" for="exit">Write one clarification phrase you will use in your next conversation.</label><textarea class="w-full border border-slate-300 rounded-lg p-3" id="exit" placeholder="One phrase I will use is..." rows="3"></textarea><div class="mt-8 pt-5 border-t border-slate-200 text-right"><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(0)">Return to Overview ↺</button></div></div></section></main>
+<!-- Master bottom navigation: available on every lesson screen -->
+<div aria-label="Lesson navigation" class="master-bottom-nav no-print">
+<button disabled="" id="previous-section" onclick="switchStep(currentStep-1)" type="button">← Back</button>
+<span id="bottom-section-label" style="color:#54595f;font-size:14px;font-weight:500">Overview · 1 of 6</span>
+<button id="next-section" onclick="switchStep(currentStep+1)" type="button">Next →</button>
+</div>
+<!-- FOOTER -->
+<footer class="bg-[#2a2c2e] border-t border-[#54595f] text-slate-400 text-xs py-6 text-center no-print mt-auto">
+<div class="max-w-7xl mx-auto px-4">
+<p>10 Week English Program | Lesson 1.2.6: Personal Information (CEFR A2–B1)</p>
+<p class="text-slate-500 text-[10px] mt-1">Designed for interactive oral fluency and instructional efficiency.</p>
+</div>
+</footer>
+<!-- JAVASCRIPT LOGIC -->
+<script>
+let currentStep = 0;
+        function switchStep(stepIndex) {
+            if (stepIndex < 0 || stepIndex > 5) return;
+            currentStep = stepIndex;
+            const steps = document.querySelectorAll('.step-section');
+            const tabs = document.querySelectorAll('.nav-tab');
+
+            steps.forEach((step, idx) => {
+                if (idx === stepIndex) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            tabs.forEach((tab, idx) => {
+                if (idx === stepIndex) {
+                    tab.classList.remove('text-slate-300', 'hover:bg-slate-700');
+                    tab.classList.add('text-white', 'bg-brand-600');
+                    tab.setAttribute('aria-current', 'step');
+                } else {
+                    tab.classList.remove('text-white', 'bg-brand-600');
+                    tab.classList.add('text-slate-300', 'hover:bg-slate-700');
+                    tab.removeAttribute('aria-current');
+                }
+            });
+
+            // Update Progress Bar
+            const progress = ((stepIndex + 1) / steps.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('progress-track').setAttribute('aria-valuenow', String(stepIndex+1));
+            document.getElementById('previous-section').disabled = stepIndex === 0;
+            document.getElementById('next-section').disabled = stepIndex === steps.length-1;
+            document.getElementById('next-section').textContent = stepIndex === steps.length-1 ? 'Completed ✓' : 'Next →';
+            const sectionName = tabs[stepIndex].textContent.trim();
+            document.getElementById('bottom-section-label').textContent = `${sectionName} · ${stepIndex+1} of ${steps.length}`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+const flashData=[
+ ['at sign','Symbol: @','My email is maria at example dot com (maria@example.com).'],
+ ['dot','Symbol: .','The website is example dot com (example.com).'],
+ ['underscore','Symbol: _','My username is alex underscore lee (alex_lee).'],
+ ['hyphen','Symbol: -','My email is anna hyphen smith at example dot com (anna-smith@example.com).'],
+ ['confirm','Check that a detail is correct.','Let me confirm your phone number: 202-555-0146. Is that correct?'],
+ ['spell','Say the letters of a word.','Could you spell your last name, please?']
+];
+function renderCards(){document.getElementById('flashcards').innerHTML=flashData.map((v,i)=>`<button type="button" class="perspective-1000 text-left min-h-[175px] rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600" aria-label="Flip ${v[0]} flashcard" aria-pressed="false" onclick="flipCard(this)"><div class="transform-style-3d relative h-full min-h-[175px]" style="transform:rotateY(0deg)"><div class="backface-hidden absolute inset-0 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center items-center p-4"><strong class="text-brand-600 text-lg">${v[0]}</strong><span class="text-slate-500 text-sm mt-3">Click to flip ↻</span></div><div class="backface-hidden absolute inset-0 bg-slate-50 rounded-xl border border-slate-200 shadow-sm p-4 flex flex-col justify-center" style="transform:rotateY(180deg)"><strong class="text-brand-600">${v[0]}</strong><p class="text-sm mt-2">${v[1]}</p><p class="text-sm mt-2 italic"><strong>Example:</strong> ${v[2]}</p></div></div></button>`).join('')}
+function flipCard(b){const flipped=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(flipped));b.firstElementChild.style.transform=flipped?'rotateY(180deg)':'rotateY(0deg)'}
+const quick=[{q:'How do you say @ in an email?',a:['at','and','dot'],c:0},{q:'A customer says “thirty.” Which age is correct?',a:['13','30','3'],c:1},{q:'Which question checks the spelling of a name?',a:['How old are you?','Could you spell your last name, please?','Where do you live?'],c:1},{q:'What is the best way to confirm a phone number?',a:['Guess the missing digits.','Repeat the digits and ask if they are correct.','Skip the number.'],c:1},{q:'How do you say the symbol _ ?',a:['underscore','at','period'],c:0}];
+function renderQuick(){document.getElementById('quickQuiz').innerHTML=quick.map((x,i)=>`<fieldset class="p-4 bg-slate-50 rounded-xl border border-slate-200"><legend class="font-semibold px-1">${i+1}. ${x.q}</legend>${x.a.map((a,j)=>`<label class="block mt-2"><input type="radio" name="quick${i}" value="${j}" class="mr-2 accent-brand-600">${a}</label>`).join('')}<p id="qfeedback${i}" class="text-sm mt-2" role="status"></p></fieldset>`).join('')}
+function checkQuick(){let score=0;quick.forEach((x,i)=>{const selected=document.querySelector(`input[name="quick${i}"]:checked`),p=document.getElementById('qfeedback'+i);if(!selected){p.className='text-amber-700 text-sm mt-2';p.textContent='Choose an answer.'}else if(Number(selected.value)===x.c){score++;p.className='text-green-700 text-sm mt-2';p.textContent='✓ Correct'}else{p.className='text-red-700 text-sm mt-2';p.textContent='Not quite. Correct answer: '+x.a[x.c]}});document.getElementById('quickResult').textContent='Score: '+score+' / '+quick.length}
+function resetQuick(){renderQuick();document.getElementById('quickResult').textContent=''}
+let currentUtterance=null;
+function stopSpeech(){if('speechSynthesis' in window)window.speechSynthesis.cancel();currentUtterance=null}
+function speak(text){if(!('speechSynthesis' in window)){alert('Speech playback is unavailable in this browser. Try Chrome or Edge.');return}stopSpeech();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=Number(document.getElementById('speed')?.value||1);const voices=window.speechSynthesis.getVoices();const english=voices.find(v=>v.lang.toLowerCase()==='en-us')||voices.find(v=>v.lang.toLowerCase().startsWith('en'));if(english)u.voice=english;currentUtterance=u;window.speechSynthesis.speak(u)}
+const profiles=[
+{title:'Recording 1 · New Member Registration',level:'A2',audio:'Hello. My name is Daniel Morales. That is D A N I E L, M O R A L E S. I am thirty years old. My phone number is two zero two, five five five, zero one eight four. My email is daniel dot m at example dot com.',fields:[['Full name','Daniel Morales'],['Age','30'],['Phone','2025550184'],['Email','daniel.m@example.com']]},
+{title:'Recording 2 · Contact Information Update',level:'A2–B1',audio:'Hi, I need to update my contact information. My name is Olivia Chen. My new address is forty-two Pine Street, Seattle, Washington, nine eight one zero one. Let me spell my email: olivia underscore chen at example dot org. That is olivia, underscore, chen, at, example, dot, org.',fields:[['Full name','Olivia Chen'],['Street address','42 Pine Street'],['City','Seattle'],['State','Washington'],['ZIP code','98101'],['Email','olivia_chen@example.org']]},
+{title:'Recording 3 · Customer Information Correction',level:'B1',audio:'Hello, this is Jordan Lee. I noticed two mistakes in my profile. My age is thirteen, not thirty. Let me repeat: thirteen years old. Also, my phone number ends in six four two eight, not six four two nine. My correct phone number is three one two, five five five, six four two eight. My email is jordan hyphen lee at example dot net. Could you please confirm those changes?',fields:[['Full name','Jordan Lee'],['Correct age','13'],['Correct phone','3125556428'],['Correct email','jordan-lee@example.net']]}
+];
+function normalized(s){return String(s).trim().toLowerCase().replace(/[\s()\-]/g,'')}
+function renderListening(){document.getElementById('listeningExercises').innerHTML=profiles.map((p,i)=>`<article class="bg-white border border-slate-200 rounded-xl p-5"><div class="flex flex-wrap justify-between gap-2"><h3>${p.title}</h3><span class="bg-brand-100 text-brand-800 rounded-full px-3 py-1 text-xs">${p.level}</span></div><p class="text-sm text-slate-600 mt-2">Listen and record the information. Use fictional details only.</p><div class="flex flex-wrap gap-2 my-4"><button class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg" onclick="playProfile(${i})">▶ Play / Replay Audio</button><button class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg" onclick="toggleTranscript(${i})">Show / Hide Transcript</button></div><div id="transcript${i}" class="hidden p-3 bg-slate-50 rounded-lg text-sm mb-4">${p.audio}</div><div class="grid md:grid-cols-2 gap-3">${p.fields.map((f,j)=>`<label class="block text-sm font-semibold">${f[0]}<input id="listen${i}_${j}" autocomplete="off" class="block w-full border border-slate-300 rounded-lg p-3 mt-1 font-normal" placeholder="Type what you hear"><span id="lf${i}_${j}" class="block mt-1 font-normal text-sm" aria-live="polite"></span></label>`).join('')}</div><div class="flex flex-wrap gap-3 mt-5"><button class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg" onclick="checkProfile(${i})">Check Answers</button><button class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg" onclick="resetProfile(${i})">Reset</button></div><p id="score${i}" role="status" class="font-semibold mt-3"></p></article>`).join('')}
+function playProfile(i){speak(profiles[i].audio)}
+function toggleTranscript(i){document.getElementById('transcript'+i).classList.toggle('hidden')}
+function checkProfile(i){const p=profiles[i];let score=0;p.fields.forEach((f,j)=>{const el=document.getElementById(`listen${i}_${j}`),fb=document.getElementById(`lf${i}_${j}`);const good=normalized(el.value)===normalized(f[1]);if(good)score++;fb.className='block mt-1 text-sm '+(good?'text-green-700':'text-red-700');fb.textContent=good?'✓ Correct':'Correct answer: '+f[1]});document.getElementById('score'+i).textContent='Accuracy: '+score+' / '+p.fields.length}
+function resetProfile(i){profiles[i].fields.forEach((_,j)=>{document.getElementById(`listen${i}_${j}`).value='';document.getElementById(`lf${i}_${j}`).textContent=''});document.getElementById('score'+i).textContent='';document.getElementById('transcript'+i).classList.add('hidden')}
+const roleDescriptions={a:'<h3>Scenario A · Gym Registration</h3><p><strong>Receptionist:</strong> Welcome a new member. Ask for their full name, age, phone number and email. Confirm the spelling and digits before completing the registration.</p><p class="mt-3"><strong>Member:</strong> Invent a safe, fictional identity. Speak clearly and answer clarification questions.</p>',b:'<h3>Scenario B · Customer Information Update</h3><p><strong>Agent:</strong> A customer wants to update their contact information. Ask for the changed detail, repeat it back and confirm accuracy. Do not request passwords or sensitive identifiers.</p><p class="mt-3"><strong>Customer:</strong> Use fictional information. Correct one detail when the agent repeats it incorrectly.</p>'};
+function showRole(id){document.getElementById('roleContent').innerHTML=roleDescriptions[id];for(const [key,button] of [['a','roleA'],['b','roleB']]){const el=document.getElementById(button);el.className=key===id?'bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-lg':'bg-slate-200 text-slate-800 px-4 py-2.5 rounded-lg'}}
+renderCards();renderQuick();renderListening();showRole('a');
+if(!('speechSynthesis' in window))document.getElementById('voiceStatus').textContent='Audio unavailable in this browser.';
+</script>
+</body>
+</html>
